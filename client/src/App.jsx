@@ -1,11 +1,18 @@
+import React, { useState } from 'react';
+import Grid from "@mui/material/Grid";
 import Header from './components/Header';
-// import HomePage from './Pages/HomePage';
+import ProductCard from './components/ProductCard'
 import './App.css';
 
 export default function App() {
-  return (
-    <div>
-      <Header />
-    </div>
-  );
+    const [products, setProducts] = useState([]);
+
+    return (
+        <div>
+            <Header setProducts={setProducts}/>
+            <Grid container spacing={2}>
+                {products.map(product => <ProductCard {...product}/>)}
+		    </Grid>
+        </div>
+    );
 }
